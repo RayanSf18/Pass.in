@@ -1,0 +1,8 @@
+CREATE TABLE tb_participants (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    event_id UUID NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (event_id) REFERENCES tb_events(id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
